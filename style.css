@@ -1,0 +1,180 @@
+:root {
+    --dark: #171b21;
+    --navy: #202a36;
+    --gold: #dfad45;
+    --ink: #202833;
+    --paper: #f7f7f4;
+    --line: #dedfdc;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    color: var(--ink);
+    font: 1rem/1.55 Arial,sans-serif;
+    background:
+        radial-gradient(ellipse at top right, #5a4826 0, transparent 30%),
+        linear-gradient(145deg, #343a42, var(--dark) 70%);
+}
+
+header {
+    position: sticky;
+    top: .6rem;
+    z-index: 5;
+    width: min(68rem, calc(100% - 2rem));
+    margin: .6rem auto 1.5rem;
+    border: 1px solid #202a36ef;
+    box-shadow: 0 8px 24px #0004;
+    backdrop-filter: blur(12px);
+}
+
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .25rem;
+    margin: 0;
+    padding: .6rem;
+    list-style: none;
+}
+
+nav a {
+    display: block;
+    padding: .55rem .8rem;
+    border-radius: 999px;
+    color: var(--paper);
+    text-decoration: none;
+}
+
+nav a:hover {
+    background: var(--gold);
+    color: var(--dark);
+}
+
+main{
+    max-width: 70rem;
+    margin: auto;
+    padding: 0 1.25rem 3rem;
+}
+
+h1 {
+    color: white;
+}
+
+section {
+    margin: 1.25rem 0;
+    padding: 1.5rem;
+    background: var(--paper);
+    border-radius: 1rem;
+}
+
+h2,
+h3,
+label {
+    color: var(--navy);
+}
+
+h2{
+    margin-top: 0;
+}
+
+.summary{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    gap: 1rem;
+}
+
+.summary-card {
+    padding: 1rem;
+    background: white;
+    border-left: 4px solid var(--gold);
+    border-radius: .75rem;
+}
+
+.summary-card h3 {
+    margin: 0 0 .4rem;
+}
+
+form {
+    display: grid;
+    gap: .6rem;
+}
+ 
+label,
+output {
+    font-weight: bold;
+}
+
+input,
+button {
+    padding: .7rem;
+    border: 1px solid var(--line);
+    border-radius: .5rem;
+    font: inherit;
+}
+
+button {
+    background: var(--navy);
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: var(--gold);
+    color: var(--dark);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, 
+td{
+    padding: .8rem;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+}
+
+th {
+    background: var(--navy);
+    color: white;
+}
+
+main > section {
+    display: none;
+}
+
+main > section:target,
+main:not(:has(:target)) > #dashboard {
+    display: block;
+}
+
+:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 3px;
+}
+
+@media (max-width: 40rem) {
+    main {
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+
+    section {
+        padding: 1rem;
+    }
+
+    table {
+        font-size: .9rem;
+    }
+
+    th,
+    td {
+        padding: .5rem;
+    }
+}

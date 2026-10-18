@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head> 
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Financial Tracker Test</title>
+        <style>
+            body{
+                font-family: Arial, sans-serif;
+                max-width: 40rem;
+                margin: 2rem auto;
+                padding: 0 1rem;
+            }
+            .pass {
+                color: #1a7f37;
+            }
+            .fail {
+                color: #c62828;
+                font-weight: 700;
+            }
+            #summary {
+                font-size: 1.2rem;
+                font-weight: 700;
+                margin-bottom: 1rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Financial Tracker Tests</h1>
+        <p id="summary"></p>
+        <ul id="results"></ul>
+
+        <script>
+            const patterns = {
+                date: /^\d{4}-\d{2}-\d{2}$/,
+                amount:/^\d+(\.\d{1,2})?$/,
+                category:/^[A-Za-z0-9.,'&()-]{1,40}$/,
+                description:/^[A-Za-z0-9 ., '&()!?-]{1,60}$/
+            };
+
+            const tests = [
+                { field: "date", good:["2029-10-28","2025-01-05"], bad: ["28-10-2026","2026/10/28","2026-1-5","" ]},
+                {field: "amount", good: ["12","12.5","12.50"], BAD:["-5","12.567","1.E3","abc",".50",""]},
+                {field:"category",good:["food","Rent & Bills", "Gym(monthly)"], bad:["Food@Home","<script>",""]},
+                {field: "description", good:["lunch at cafe!","Bus fare, Return"], bad:["lunch $2", "50% off",""]}
+            ];
+
+            const list = document.querySelector("#results");
+            let passed = 0;
+            let total = 0;
+
+            function check(filed, value, shouldMatch){
+                const result = patterns[field].test(value);
+                const ok = result === shouldMatch;
+                total++;
+                if(ok)passed++;
+
+                const li = document.createElement("li");
+                l.className = ok? "pass" : "fail";
+                li.textContent = (ok ? "PASS" :"FAIL") + "-" + field + ":\"" + value + "\" should" + (shouldMatch ? "match" : "not match");
+                list.appendChild(li);
+            }
+
+            for (const t of tests) {
+                t.good.forEach(value => check(t.field, value, true));
+                t.bad.forEach(value => check(t.field, value, false));
+            }
+
+            document.querySelector("#summary").textContent = passed + "of" + total + " test passed";
+        </script>
+    </body>
+</html>

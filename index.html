@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js" defer></script>
+        <title> My Financial Tracker</title>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#transactions">Transactions</a></li>
+                    <li><a href="#add-transaction">Add Transaction</a></li>
+                    <li><a href="#settings">Settings</a></li>
+                    <li><a href="#About">About</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main tabindex="-1" id="main-content">
+            <h1 id="page-title"> My Financial Tracker</h1>
+            <section id="dashboard">
+                <h2> Dashboard </h2>
+                <div class="summary" aria-live="polite">
+                    <div class=" summary-card">
+                        <h3>Total Spending </h3>
+                        <output>0.00</output>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Total Transactions</h3>
+                        <output>0</output>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Top Category</h3>
+                        <output>No transaction yet</output>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Budget cap status</h3>
+                        <output>Set a cap in settings</output>
+                    </div>
+                </div>
+            </section>
+            <section id="transactions">
+                <h2>Transactions</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+            <section id="add-transaction">
+                <h2>add Transaction</h2>
+                <form id="transaction-form">
+                    <label for="date">date</label>
+                    <input type="date" id="date" name="date" required>
+                    <label for="Category"> Category</label>
+                    <input type="Text" id="Category" name="Category" required>
+                    <label for="Description">Description</label>
+                    <input type="text" id="Description" name="Description" required>
+                    <label for="Amount">Amount</label>
+                    <input type="Number" id="Amount" name="Amount" step="0.01" min="0" required>
+                    <button type="submit">Add transaction</button>
+                </form>
+            </section>
+            <section id="settings">
+                <h2>Settings</h2>
+                <form id="setting-form">
+                    <label for="BudgetPeriod">Month and year</label>
+                    <input type="month" id="BudgetPeriod" name="BudgetPeriod" required>
+                    <label for="BudgetCap">Budget Cap</label>
+                    <input type="number" id="BudgetCap" name="BudgetCap" step="0.01" min="0" required>
+                    <button type="submit">Save Budget Cap</button>
+                    <p id="setting-message" role="status" aria-live="polite"></p>
+                </form>
+            </section>
+            <section id="About">
+                <h2>About</h2>
+                <p><strong>Welcome To Your Financial Tracker!</strong><br>
+                The tracker helps you to manage the expenses you make daily by recording them.</p>
+            </section>
+        </main>
+    </body>
+</html>
